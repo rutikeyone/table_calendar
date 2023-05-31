@@ -3,6 +3,11 @@
 
 import 'package:flutter/widgets.dart';
 
+typedef TableRow DaysOfWeekBuilder(
+    Decoration? dowDecoration,
+    Widget Function(BuildContext, DateTime)? dowBuilder,
+    List<DateTime> visibleDays);
+
 class CalendarPage extends StatelessWidget {
   final Widget Function(BuildContext context, DateTime day)? dowBuilder;
   final Widget Function(BuildContext context, DateTime day) dayBuilder;

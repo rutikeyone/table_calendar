@@ -1,7 +1,7 @@
 // Copyright 2019 Aleksander Woźniak
 // SPDX-License-Identifier: Apache-2.0
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 typedef TableRow DaysOfWeekBuilder(
     Decoration? dowDecoration,
@@ -20,6 +20,7 @@ class CalendarPage extends StatelessWidget {
   final bool dowVisible;
   final bool weekNumberVisible;
   final double? dowHeight;
+  final Widget? headerDivider;
 
   const CalendarPage({
     Key? key,
@@ -34,6 +35,7 @@ class CalendarPage extends StatelessWidget {
     this.dowVisible = true,
     this.weekNumberVisible = false,
     this.dowHeight,
+    this.headerDivider,
   })  : assert(!dowVisible || (dowHeight != null && dowBuilder != null)),
         assert(!weekNumberVisible || weekNumberBuilder != null),
         super(key: key);
@@ -47,11 +49,26 @@ class CalendarPage extends StatelessWidget {
         children: [
           if (weekNumberVisible) _buildWeekNumbers(context),
           Expanded(
-            child: Table(
-              border: tableBorder,
+            child: Column(
               children: [
-                if (dowVisible) _buildDaysOfWeek(context),
-                ..._buildCalendarDays(context),
+                if (dowVisible)
+                  Column(
+                    children: [
+                      Table(
+                        border: tableBorder,
+                        children: [_buildDaysOfWeek(context)],
+                      ),
+                      headerDivider != null ? headerDivider! : const SizedBox(),
+                    ],
+                  ),
+                Expanded(
+                  child: Table(
+                    border: tableBorder,
+                    children: [
+                      ..._buildCalendarDays(context),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),

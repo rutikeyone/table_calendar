@@ -206,6 +206,8 @@ class TableCalendar<T> extends StatefulWidget {
 
   final CalendarHeaderBuilder? calendarHeaderBuilder;
 
+  final Widget? headerDivider;
+
   /// Creates a `TableCalendar` widget.
   TableCalendar({
     Key? key,
@@ -263,6 +265,7 @@ class TableCalendar<T> extends StatefulWidget {
     this.onFormatChanged,
     this.onCalendarCreated,
     this.calendarHeaderBuilder,
+    this.headerDivider,
   })  : assert(availableCalendarFormats.keys.contains(calendarFormat)),
         assert(availableCalendarFormats.length <= CalendarFormat.values.length),
         assert(weekendDays.isNotEmpty
@@ -483,6 +486,7 @@ class _TableCalendarState<T> extends State<TableCalendar<T>> {
         Flexible(
           flex: widget.shouldFillViewport ? 1 : 0,
           child: TableCalendarBase(
+            headerDivider: widget.headerDivider,
             onCalendarCreated: (pageController) {
               _pageController = pageController;
               widget.onCalendarCreated?.call(pageController);

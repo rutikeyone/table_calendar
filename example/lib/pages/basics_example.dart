@@ -92,6 +92,13 @@ class _TableBasicsExampleState extends State<TableBasicsExample> {
         title: Text('TableCalendar - Basics'),
       ),
       body: TableCalendar(
+        headerDivider: Padding(
+          padding: EdgeInsets.symmetric(vertical: 8),
+          child: Container(
+            color: Colors.red,
+            height: 1,
+          ),
+        ),
         calendarHeaderBuilder: _onCalendarHeaderBuilder,
         calendarStyle: CalendarStyle(
           todayDecoration: const BoxDecoration(

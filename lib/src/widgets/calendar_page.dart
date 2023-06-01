@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import 'package:flutter/material.dart';
+import 'package:table_calendar/src/customization/header_divider.dart';
 
 typedef TableRow DaysOfWeekBuilder(
     Decoration? dowDecoration,
@@ -20,7 +21,7 @@ class CalendarPage extends StatelessWidget {
   final bool dowVisible;
   final bool weekNumberVisible;
   final double? dowHeight;
-  final Widget? headerDivider;
+  final HeaderDivider? headerDivider;
 
   const CalendarPage({
     Key? key,
@@ -58,7 +59,11 @@ class CalendarPage extends StatelessWidget {
                         border: tableBorder,
                         children: [_buildDaysOfWeek(context)],
                       ),
-                      headerDivider != null ? headerDivider! : const SizedBox(),
+                      headerDivider != null
+                          ? Padding(
+                              padding: headerDivider!.padding,
+                              child: headerDivider!.widget)
+                          : const SizedBox(),
                     ],
                   ),
                 Expanded(

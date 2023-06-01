@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:simple_gesture_detector/simple_gesture_detector.dart';
+import 'package:table_calendar/src/customization/header_divider.dart';
 
 import 'shared/utils.dart';
 import 'widgets/calendar_core.dart';
@@ -36,7 +37,7 @@ class TableCalendarBase extends StatefulWidget {
   final SwipeCallback? onVerticalSwipe;
   final void Function(DateTime focusedDay)? onPageChanged;
   final void Function(PageController pageController)? onCalendarCreated;
-  final Widget? headerDivider;
+  final HeaderDivider? headerDivider;
 
   TableCalendarBase({
     Key? key,
@@ -261,10 +262,14 @@ class _TableCalendarBaseState extends State<TableCalendarBase> {
     );
   }
 
+  //TODO
   double _getPageHeight(int rowCount) {
     final tablePaddingHeight = widget.tablePadding?.vertical ?? 0.0;
     final dowHeight = widget.dowVisible ? widget.dowHeight! : 0.0;
-    return dowHeight + rowCount * widget.rowHeight + tablePaddingHeight;
+    return dowHeight +
+        rowCount * widget.rowHeight +
+        tablePaddingHeight +
+        (widget.headerDivider?.padding.vertical ?? 0.0);
   }
 
   int _calculateFocusedPage(

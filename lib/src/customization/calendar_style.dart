@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import 'package:flutter/widgets.dart';
+import 'package:table_calendar/src/customization/header_divider.dart';
 
 /// Class containing styling and configuration for `TableCalendar`'s content.
 class CalendarStyle {
@@ -151,6 +152,8 @@ class CalendarStyle {
   /// Padding for the internal `Table` widget.
   final EdgeInsets tablePadding;
 
+  final HeaderDivider? headerDivider;
+
   /// Creates a `CalendarStyle` used by `TableCalendar` widget.
   const CalendarStyle({
     this.isTodayHighlighted = true,
@@ -227,6 +230,7 @@ class CalendarStyle {
     this.rowDecoration = const BoxDecoration(),
     this.tableBorder = const TableBorder(),
     this.tablePadding = const EdgeInsets.all(0),
+    this.headerDivider,
   });
 }
 

@@ -6,6 +6,7 @@ import 'dart:math';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:simple_gesture_detector/simple_gesture_detector.dart';
+import 'package:table_calendar/src/customization/header_divider.dart';
 
 import 'customization/calendar_builders.dart';
 import 'customization/calendar_style.dart';
@@ -206,7 +207,7 @@ class TableCalendar<T> extends StatefulWidget {
 
   final CalendarHeaderBuilder? calendarHeaderBuilder;
 
-  final Widget? headerDivider;
+  final HeaderDivider? headerDivider;
 
   /// Creates a `TableCalendar` widget.
   TableCalendar({

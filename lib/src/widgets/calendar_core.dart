@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import 'package:flutter/material.dart';
+import 'package:table_calendar/src/customization/header_divider.dart';
 
 import '../shared/utils.dart';
 import 'calendar_page.dart';
@@ -32,7 +33,7 @@ class CalendarCore extends StatelessWidget {
   final PageController? pageController;
   final ScrollPhysics? scrollPhysics;
   final _OnCalendarPageChanged onPageChanged;
-  final Widget? headerDivider;
+  final HeaderDivider? headerDivider;
 
   const CalendarCore({
     Key? key,
